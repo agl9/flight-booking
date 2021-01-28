@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  booking: one
+  name: MyText
+  age: 1
+  suffix: MyText
+  email: MyText
+
+two:
+  booking: two
+  name: MyText
+  age: 1
+  suffix: MyText
+  email: MyText

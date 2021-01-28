@@ -4,7 +4,14 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.json
   def index
-    @flights = Flight.all
+    @airports = Airport.all
+    if params[:search]
+      @flights = Flight.where(from_airport_id: Airport.where(code: params[:search][:from_airport]),
+                              to_airport_id: Airport.where(code: params[:search][:to_airport])
+    ).order('time')
+    else
+      @flights = Flight.all
+    end
   end
 
   # GET /flights/1

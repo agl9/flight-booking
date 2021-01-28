@@ -22,6 +22,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'bulma-rails', '~> 0.9.1'
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

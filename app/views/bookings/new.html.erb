@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+<div class ='container is-centered has-text-centered'>
+
+  <div class ='container'>
+    <h1 class ='heading'><br><br>Booking details: </h1>
+  </div>
+
+  <div class = 'container'>
+    <table class ='table is-fullwidth is-bordered'>
+      <thead>
+        <tr>
+          <th>Flight ID:</th>
+          <th>Date</th>
+          <th>Departure:</th>
+          <th>Destination:</th>
+          <th>Take off at:</th>
+          <th>Duration(hours):</th>
+          <th>Number of Passengers</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <th><%= @flight.id%></th>
+            <th><%=params[:booking][:date]%></th>
+            <th><%= @flight.from_airport.name%></th>
+            <th><%=@flight.to_airport.name%></th>
+            <th><%= @flight.time.strftime("%k:%M")%></th>
+            <th><%=@flight.duration%></th>
+            <th><%=@booking.number_of_passengers%>  </th>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class ='container'>
+    <h1 class ='heading'><br> Please enter Passenger Details: </h1>
+  </div>
+
+  <div class ='container'>
+    <%=simple_form_for(@booking) do |b|%>
+    <%= b.error_notification%> <br>
+      <%= b.fields_for (:passengers) do |p|%>
+          <div class ='columns'>
+            <div class = 'column'>
+              <%= p.input :suffix,
+                    collection: %w[Mr. Ms.],
+                    input_html: {class: 'input', value:''},
+                    wrapper: false,
+                    label_html: {class: 'label'}
+                    %>
+            </div>
+            <div class = 'column'>
+              <%= p.input :name,
+                    input_html: {class: 'input', value:''},
+                    wrapper: false,
+                    label_html: {class: 'label'}
+                    %>
+            </div>
+            <div class = 'column'>
+              <%= p.input :age,
+                    input_html: {class: 'input', value:''},
+                    wrapper: false,
+                    label_html: {class: 'label'}
+                    %>
+            </div>
+            <div class = 'column'>
+              <%= p.input :email,
+                    input_html: {class: 'input', value:''},
+                    wrapper: false,
+                    label_html: {class: 'label'}
+                    %>
+            </div>
+          </div>
+      <%end%>
+
+        <div class = 'has-text-centered' >
+          <%= b.hidden_field :number_of_passengers, value: params[:booking][:number_of_passengers]%>
+          <%= b.hidden_field :date, value: params[:booking][:date]%>
+          <%= b.hidden_field :flight_id, value: @flight.id%>
+          <%= b.submit 'Submit',class: 'button is-large is-rounded' %>
+        </div>
+    <%end%>
+  </div>
+
+
+</div>

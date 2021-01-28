@@ -1,0 +1,43 @@
+<div class ='container is-centered has-text-centered'>
+  <div class ='title is-3'>
+  Available Flights:
+  <div>
+
+  <%= simple_form_for(:booking, method: :get, url: new_booking_path) do |b|%>
+    <div class = 'section'>
+      <table class ='table'>
+        <thead>
+          <tr>
+            <th>Flight ID:</th>
+            <th>Departure:</th>
+            <th>Destination:</th>
+            <th>Take off at:</th>
+            <th>Duration(hours):</th>
+            <th>Price (INR)</th>
+            <th>Your Selection</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @flights.each do |flight|%>
+            <tr>
+              <th><%= flight.id%></th>
+              <th><%= flight.from_airport.name%></th>
+              <th><%=flight.to_airport.name%></th>
+              <th><%= flight.time.strftime("%k:%M")%></th>
+              <th><%=flight.duration%></th>
+              <th><%=rand(2..9)*1000%></th>
+              <th><%=b.radio_button 'flight_id', flight.id%>  </th>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class = 'has-text-centered' >
+      <%= b.hidden_field :number_of_passengers, value: params[:search][:number_of_passengers]%>
+      <%= b.hidden_field :date, value: params[:search][:date]%>
+      <%= b.submit 'Proceed to Details',class: 'button is-large is-rounded' %>
+    </div>
+  <%end%>
+</div> 

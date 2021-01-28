@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import 'bulma';
+
+
+ .navbar{
+  background-color: rgb(209, 103, 16);
+  color: rgba(26, 25, 25, 0.856);
+}
+ .navbar-item{
+  border: 1vw;
+  color: rgb(209, 103, 16);
+  background-color: rgba(26, 25, 25, 0.856);
+}
+
+#logo{
+  color: rgb(209, 103, 16);
+}
+
+#logo:hover{
+  color: rgba(26, 25, 25, 0.856);
+}
+
+.button{
+  background-color: rgb(209, 103, 16);
+  border-color: rgb(209, 103, 16);
+  color: rgba(0, 0, 0, 0.856);
+}
+
+.button:hover{
+  color: rgb(209, 103, 16);
+  background-color: rgba(26, 25, 25, 0.856);
+  border-color: rgba(26, 25, 25, 0.856);
+}
+
+.navbar-end{
+  background-color: rgba(26, 25, 25, 0.856)
+}
+
+.input:hover{
+  border-color: rgb(209, 103, 16);
+}
+
+.date{
+  margin-bottom: 0;
+}
+
+tbody tr:hover{
+  background-color: rgb(241, 198, 142);
+}
+
+.heading{
+  font-size: 1.5vw;
+}

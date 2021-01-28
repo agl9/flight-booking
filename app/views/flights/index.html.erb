@@ -1,25 +1,58 @@
 <p id="notice"><%= notice %></p>
+<div class = 'section'>
+  <div class ='has-text-centered'>
+    <h1 class = 'title is-2'><br>Search for Flights:</h1>
+  </div>
 
-<h1>Flights</h1>
+  <div class ='container'>
+    <%= simple_form_for(:search, method: :get, url: root_path) do |f|%>
+    <%= f.error_notification%> <br>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class ='columns'>
+        <div class = 'column'>
+          <%= f.input :from_airport,
+                collection: Flight.all.map{|flight| flight.from_airport.code}.uniq,
+                input_html: {class: 'input', value:''},
+                placeholder: 'From City',
+                wrapper: false,
+                label_html: {class: 'label'}
+                %>
+        </div>
+        <div class = 'column'>
+          <%= f.input :to_airport,
+                collection: Flight.all.map{|flight| flight.to_airport.code}.uniq,
+                input_html: {class: 'input', value:''},
+                placeholder: 'To City',
+                wrapper: false,
+                label_html: {class: 'label'}
+                %>
+        </div>
+        <div class = 'column'>
+          <%= f.input :number_of_passengers,
+                collection: %w[1 2 3 4 5 6],
+                input_html: {class: 'input', value:''},
+                wrapper: false,
+                label_html: {class: 'label'}
+                %>
+        </div>
+        <div class = 'column'>
+          <%= f.input :date,
+                input_html: {class: 'input date', type: 'date', value:''},
+                wrapper: false,
+                label_html: {class: 'label'}
+                %>
+        </div>
+      </div>
+      <div class = 'has-text-centered' >
+        <%= f.submit 'Search',class: 'button is-large is-rounded' %>
+      </div>
 
-  <tbody>
-    <% @flights.each do |flight| %>
-      <tr>
-        <td><%= link_to 'Show', flight %></td>
-        <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
-        <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%end%>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Flight', new_flight_path %>
+<div class ='section'>
+  <% if params[:search]%>
+    <%= render 'flight_select'%>
+  <%end%>
+</div>

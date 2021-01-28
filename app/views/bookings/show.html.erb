@@ -1,0 +1,57 @@
+<div class ='Section is-centered has-text-centered'>
+
+  <div class ='container'>
+    <h1 class ='heading'><br><br>Flight details: </h1>
+  </div>
+
+  <div class = 'container'>
+    <table class ='table is-fullwidth is-bordered'>
+      <thead>
+        <tr>
+          <th>Flight ID:</th>
+          <th>Departure:</th>
+          <th>Destination:</th>
+          <th>Take off at:</th>
+          <th>Duration(hours):</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <th><%= @flight.id%></th>
+            <th><%= @flight.from_airport.name%></th>
+            <th><%=@flight.to_airport.name%></th>
+            <th><%= @flight.time.strftime("%k:%M")%></th>
+            <th><%=@flight.duration%></th>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class ='container'>
+    <h1 class ='heading'><br><br>Passenger details: </h1>
+  </div>
+  <div class = 'container'>
+    <table class ='table is-fullwidth is-bordered'>
+      <thead>
+        <tr>
+          <th>Suffix</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+   
+      <%@booking.passengers.each do |p|%>   
+      <tbody>
+          <tr>
+            <th><%= p.suffix%></th>
+            <th><%=p.name%></th>
+            <th><%= p.age%></th>
+            <th><%=p.email%></th>
+          </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </div>
+</div>

@@ -32,4 +32,3 @@ routes.each do |route|
                    time: (Time.now+60*60*rand(-12..12)).strftime("%k:%M")})
   end
 end
-

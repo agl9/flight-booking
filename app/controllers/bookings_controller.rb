@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash.notice = "Booking created!"
+      PassengerMailer.with(booking_id: @booking.id).booking_confirmation.deliver_now
       redirect_to booking_path(@booking)
     else
       flash.notice = 'Fix errors!'

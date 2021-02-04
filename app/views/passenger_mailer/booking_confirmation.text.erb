@@ -1,0 +1,10 @@
+Thank you for completing your booking on MMT. Your flight details are:
+
+  Flight ID:<%= @flight.id%>
+
+Passenger details:   
+<%@booking.passengers.each do |p|%>   
+  Name: <%= p.suffix%> <%=p.name%>
+  Age: <%= p.age%>
+
+<%end%>
